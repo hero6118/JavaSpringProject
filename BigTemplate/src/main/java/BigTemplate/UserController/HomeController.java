@@ -5,16 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import BigTemplate.Dao.HomeDao;
+import BigTemplate.Dao.SlidesDao;
+import BigTemplate.Service.User.HomeServiceImpl;
 
 @Controller
 public class HomeController {
-//	@Autowired
-//	HomeDao homeDao;
+	@Autowired
+	HomeServiceImpl HomeService;
 @RequestMapping(value ={"/","/trang-chu"})
 public ModelAndView Index() {
 	ModelAndView mv = new ModelAndView("user/index");
-	//mv.addObject("slides",  homeDao.GetDataSlide());
+		mv.addObject("slides",  HomeService.GetDataSlide());
 	return mv;
 }
 @RequestMapping(value ={"/product"})

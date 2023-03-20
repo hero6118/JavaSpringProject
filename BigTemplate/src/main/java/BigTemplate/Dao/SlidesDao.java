@@ -10,17 +10,15 @@ import BigTemplate.Entity.MapperSlides;
 import BigTemplate.Entity.Slides;
 
 @Repository
-public class HomeDao {
+public class SlidesDao {
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
+	
 	public List<Slides> GetDataSlide(){
 		List<Slides> list = new ArrayList<Slides>();
 		String sql = "SELECT * FROM slides";
 		list = jdbcTemplate.query(sql, new MapperSlides());
 		return list;
 	}
-	public static void main(String[] args) {
-		HomeDao homeDao= new HomeDao();
-		List<Slides> list = homeDao.GetDataSlide();
-	}
+	
 }
